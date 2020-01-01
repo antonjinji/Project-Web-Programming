@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-//Route::get('/home', 'HomeController@index');
+// Route::get('/homePage', 'HomeController@index');
 
+// Route::get('/home', function (){
+//     return view('homePage');
+// });
+Route::get('/homePage', 'HomeController@index');
 Route::get('/homePage', 'QuestionAndEtcController@index');
 
 // Route::get(['middleware' => 'web'], function(){
@@ -31,6 +35,5 @@ Route::get('/homePage', 'QuestionAndEtcController@index');
 
 
 Auth::routes();
-
 
 

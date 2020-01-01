@@ -1,7 +1,5 @@
 @extends(Auth::guest() ? 'layout.guestLayout' : (Auth::user()->admin ? 'layout.adminLayout' : 'layout.memberLayout'))
 
-use App\Topic;
-
 @section('title', 'Homepage')
 
 @section('content')
@@ -29,7 +27,7 @@ use App\Topic;
                     </div>
 
                     <div>
-                        {{--  {{$topics->links()}}  --}}
+                         {{-- {{$questions->links()}} --}}
                     </div>
                 </div>
               </div>
