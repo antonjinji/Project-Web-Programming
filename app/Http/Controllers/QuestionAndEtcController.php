@@ -20,12 +20,6 @@ class QuestionAndEtcController extends Controller
     public function index()
     {
         $questions = Question::paginate(10);
-<<<<<<< HEAD
-        return view('homePage')
-=======
->>>>>>> 9497a45861e0ea9ae274e2c6a4ea60ab8dd909d9
-
-
         return view('homePage', compact('questions'));
     }
 
@@ -35,7 +29,7 @@ class QuestionAndEtcController extends Controller
         if(isset($request['search'])){
             $key = $request['search'];
         }
-        $questionsAndEtc = Thread::where('name', 'like', '%'.$key.'%')
+        $questionsAndEtc = Question::where('name', 'like', '%'.$key.'%')
             ->orwhere('question', 'like', '%'.$key.'%')
             ->paginate(10);
         return view('homePage')->with('questionsAndEtc', $questionsAndEtc);
