@@ -18,9 +18,8 @@ class QuestionsTableSeeder extends Seeder
                 'topic_id' => 1,
                 'question' => "What your name?",
                 'questionStatus' => "Open",
-                'questionOwner' => "Rio Rafelino",
-                'questionCreationDate' => "2019-12-25 08:10:13",
-                'created_at' => \Carbon\Carbon::now('Asia/Jakarta')
+                'user_id' => 1,
+                'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
             ]
         ]);
     }

@@ -23,6 +23,8 @@
                         @foreach ($questions as $question)
                             {{$question->question}}
                             {{\App\Topic::find($question->topic_id)->first()->nameTopic}}
+                            {{$question->questionCreationDate}}
+                            {{\App\User::find($question->user_id)->first()->name}}
                         @endforeach
                     </div>
 

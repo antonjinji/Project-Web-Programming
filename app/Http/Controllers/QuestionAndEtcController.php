@@ -21,7 +21,6 @@ class QuestionAndEtcController extends Controller
     {
         $questions = Question::paginate(10);
 
-
         return view('homePage', compact('questions'));
     }
 
