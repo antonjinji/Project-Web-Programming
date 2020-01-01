@@ -23,7 +23,10 @@ Route::get('/homePage', 'QuestionAndEtcController@index');
 //     Route::get(['middleware' => 'guest'], function(){
         Route::get('/register', 'RegisterController@registerPage');
         Route::post('/register', 'RegisterController@register');
-        Route::get('/login', 'LoginController@loginPage');
+        Route::get('/login', function(){
+            return view('auth.login');
+        });
+//        Route::get('/login', 'LoginController@loginPage');
         Route::post('/login', 'LoginController@login');
 //     });
         Route::get('/logout', 'LogoutController@logout');
