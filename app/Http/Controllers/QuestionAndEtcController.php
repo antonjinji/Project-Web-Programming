@@ -19,7 +19,10 @@ class QuestionAndEtcController extends Controller
      */
     public function index()
     {
+        $questions = Question::paginate(10);
 
+
+        return view('homePage', compact('questions'));
     }
 
     public function showAndSearchDataQuestionForHomepage(Request $request){

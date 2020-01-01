@@ -20,8 +20,9 @@
             <div class="card w-100">
                 <div class="container">
                     <div class="card-body">
-                        @foreach ($questionsAndEtc as $questionAndEtc)
-
+                        @foreach ($questions as $question)
+                            {{$question->question}}
+                            {{\App\Topic::find($question->topic_id)->first()->nameTopic}}
                         @endforeach
                     </div>
 
