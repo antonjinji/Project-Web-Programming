@@ -1,5 +1,6 @@
 @extends(Auth::guest() ? 'layout.guestLayout' : (Auth::user()->admin ? 'layout.adminLayout' : 'layout.memberLayout'))
 
+
 @section('title', 'Homepage')
 
 @section('content')
@@ -23,6 +24,8 @@
                         @foreach ($questions as $question)
                             {{$question->question}}
                             {{\App\Topic::find($question->topic_id)->first()->nameTopic}}
+                            {{$question->questionCreationDate}}
+                            {{\App\User::find($question->user_id)->first()->name}}
                         @endforeach
                     </div>
 
