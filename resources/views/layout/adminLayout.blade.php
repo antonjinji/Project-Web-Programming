@@ -51,6 +51,7 @@
                                 Manage
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Manage User</a>
                                 <a class="dropdown-item" href="#">Manage Question</a>
                                 <a class="dropdown-item" href="#">Manage Topic</a>
                             </div>

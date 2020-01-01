@@ -18,7 +18,6 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('topic_id');
             $table->string('question');
             $table->string('questionStatus');
-            $table->unsignedInteger('user_id');
             $table->date('questionCreationDate')->format('Y-m-d H:i:s');
             $table->timestamps();
         });

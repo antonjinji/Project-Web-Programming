@@ -30,7 +30,7 @@ class QuestionAndEtcController extends Controller
         if(isset($request['search'])){
             $key = $request['search'];
         }
-        $questionsAndEtc = Thread::where('name', 'like', '%'.$key.'%')
+        $questionsAndEtc = Question::where('name', 'like', '%'.$key.'%')
             ->orwhere('question', 'like', '%'.$key.'%')
             ->paginate(10);
         return view('homePage')->with('questionsAndEtc', $questionsAndEtc);
