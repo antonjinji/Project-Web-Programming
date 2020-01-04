@@ -16,6 +16,12 @@
         <title>@yield('title')</title>
 
         <style>
+            html, body{
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
             .text-size{
                 font-size: 14px;
                 margin: 0;
@@ -35,55 +41,120 @@
                 width: 40px;
                 text-align: center;
             }
+
+            .logoMenu{
+                display: flex;
+            }
+
+            .fontFamily{
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .profile_picture{
+                width: 55px;
+                height: 50px;
+            }
+
+            .display{
+                display: flex;
+                margin-bottom: 10px;
+            }
+
+            .display_block{
+                display: block;
+                margin-right: 10px;
+            }
+
+            .username{
+                margin: 0 0 0 10px;
+                color: red;
+            }
+
+            .time{
+                margin: 0 0 0 10px;
+            }
+
+            .button_answer{
+                font-size: 14px;
+            }
+
+            .paginate{
+                margin-left: 45%;
+                color: red;
+            }
+
+            .content{
+                min-height: 78%;
+                padding: 0 0;
+            }
+
+            .footer{
+                width: 100%;
+                bottom: 0;
+                position: relative;
+            }
+
+            .picture_user{
+                height: 60px;
+                width: 90px;
+            }
+
+            .fontFamilyAddUser{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+            }
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand text-danger" href="/homePage">Bjora</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Manage
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Manage User</a>
-                                <a class="dropdown-item" href="#">Manage Question</a>
-                                <a class="dropdown-item" href="#">Manage Topic</a>
-                            </div>
-                        </li>
-                    </ul>
+                <div>
+                    <div class="logoMenu">
+                        <a class="navbar-brand text-danger" href="/homePage">Bjora</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Manage
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ url('/homePage/manageUser') }}">Manage User</a>
+                                        <a class="dropdown-item" href="{{ url('/homePage/manageQuestion') }}">Manage Question</a>
+                                        <a class="dropdown-item" href="{{ url('/homePage/manageTopic') }}">Manage Topic</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-white text-size" >
+                        @php
+                            $dt = new DateTime();
+                            $d = \Carbon\Carbon::now('Asia/Jakarta');
+                            echo $d
+                        @endphp
+                    </p>
                 </div>
-                <br>
-                <p class="text-white text-size" >
-                    @php
-                        $dt = new DateTime();
-                        $d = \Carbon\Carbon::now('Asia/Jakarta');
-                        echo $d
-                    @endphp
-                </p>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="navbar-text text-white"><a href="#" class="btn">Profile</a></li>
-                        <li class="navbar-text text-white"><a href="/logout" class="btn">Logout</a></li>
+                        <li class="navbar-text text-white"><a href="{{ url('/profile') }}" class="btn">Profile</a></li>
+                        <li class="navbar-text text-white"><a href="{{ url('/logout') }}" class="btn">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <main class="py-5 bg-white">
+        <main class="py-5 bg-white content">
             @yield('content')
         </main>
 
-        <footer class="page-footer bg-dark">
+        <footer class="page-footer bg-dark footer">
             <!-- Copyright -->
             <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright
                 <a href="https://mdbootstrap.com/education/bootstrap/" class="text-danger"> Bjora.com</a>

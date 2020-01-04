@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $table = 'users';
+
+    // protected $guarded = ['id', '_token'];
     /**
      * The attributes that are mass assignable.
      *
@@ -17,10 +20,8 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'name', 'email', 'password', 'gender', 'address', 'birthday', 'profile_picture',
+        'name', 'email', 'password', 'gender', 'address', 'birthday', 'profile_picture', 'isAdmin'
     ];
-
-    // protected $table = 'users';
 
     /**
      * The attributes that should be hidden for arrays.
@@ -41,7 +42,11 @@ class User extends Authenticatable
     ];
 
     //satu user bisa punya banyak topic
-    // public function myTopic(){
-    //     return $this->hasMany(Topic::class);
-    // }
+    public function Topic(){
+        return $this->hasMany(Topic::class);
+    }
+
+    public function Question(){
+        return $this->hasMany(Question::class);
+    }
 }

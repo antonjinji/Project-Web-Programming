@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Session\Session;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -19,29 +21,21 @@ class LoginController extends Controller
         $password = $request->password;
         $remember = $request->remember;
 
-        $user = DB::table('users')->where('email', $email)->first();
+        // $user = DB::table('users')->where('email', $email)->first();
+        if(Auth::attempt([
+            'email' => $email,
+            'password' => $password])){
 
-        if($user){
-            if(Hash::check($password, $user->password)){
-                Session::put('profile_picture', $user->profile_picture);
-                Session::put('name', $user->name);
-                Session::put('topic', $user->nameTopic);
-                Session::put('question', $user->question);
-                Session::put('answer', $user->answer);
+            if($remember){
+                // Cookie::make('email', $email, 60);
+                // Cookie::make('password', $password, 60);
 
-                if($remember == true){
-                    Cookie::queue(Cookie::make('email', $email, 60));
-                    Cookie::queue(Cookie::make('password', $password, 60));
-
-                    return redirect('/homePage')->with('alert-success', 'Success Login');
-                }else{
-                    return redirect('/homePage')->with('alert-success', 'Success Login');
-                }
+                return redirect('/homePage')->with('success', 'Success Login')->withCookie(cookie('cookie', $email, 30));
             }else{
-                return redirect('/login')->with('alert-fail', 'Wrong password or email!');
+                return redirect('/homePage')->with('success', 'Success Login');
             }
         }else{
-            return redirect('/login')->with('alert-fail', 'Wrong password or email!');
+            return redirect('/login')->with('fail', 'Wrong password or email!');
         }
     }
 }

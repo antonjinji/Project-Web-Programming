@@ -19,6 +19,10 @@ class CreateTopicsTable extends Migration
             $table->string('nameTopic');
             $table->timestamps();
         });
+
+        // Schema::table('topics', function (Blueprint $table){
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -28,6 +32,6 @@ class CreateTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topic');
+        Schema::dropIfExists('topics');
     }
 }

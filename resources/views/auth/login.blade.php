@@ -3,16 +3,55 @@
 @section('title', 'Login')
 
 @section('content')
-@if (Session::has('alert-fail'))
-    <div class="alert alert-danger" role="alert">
-        <strong>{{Session::get('alert-fail')}}</strong>
+<style>
+    .alert {
+        width: 47%; 
+        padding: 20px;
+        background-color: #4CAF50;
+        color: white;
+        margin-bottom: 15px;
+    }
+      
+    /* The close button */
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .modifAlert{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+      
+    /* When moving the mouse over the close button */
+    .closebtn:hover {
+        color: black;
+    }
+</style>
+
+@if (Session('success'))
+    <div class="modifAlert">
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{Session::get('success')}}
+        </div>
     </div>
 @endif
 
-@if (Session::has('alert-success'))
-    <div class="alert alert-success" role="alert">
-        <strong>{{Session::get('alert-success')}}</strong>
+@if (Session('fail'))
+<div class="modifAlert">
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{Session::get('fail')}}
     </div>
+</div>
 @endif
 
 <div class="container">

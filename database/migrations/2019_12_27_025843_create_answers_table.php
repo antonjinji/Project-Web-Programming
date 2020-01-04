@@ -16,11 +16,19 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('question_id');
-            $table->string('answer');
-            $table->string('answerOwner');
+            $table->text('answer');
+            $table->integer('user_id');
             $table->date('answerCreateDate')->format('Y-m-d H:i:s');
             $table->timestamps();
         });
+
+        // Schema::table('answers', function (Blueprint $table) {
+        //     $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        // });
+
+        // Schema::table('answers', function (Blueprint $table) {
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -30,6 +38,6 @@ class CreateAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answer');
+        Schema::dropIfExists('answers');
     }
 }

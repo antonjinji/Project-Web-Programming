@@ -16,6 +16,12 @@
         <title>@yield('title')</title>
 
         <style>
+            html, body{
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+
             .text-size{
                 font-size: 14px;
                 margin: 0;
@@ -34,6 +40,58 @@
                 color: #aaa;
                 width: 40px;
                 text-align: center;
+            }
+
+            .logoMenu{
+                display: flex;
+            }
+
+            .fontFamily{
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .profile_picture{
+                width: 55px;
+                height: 50px;
+            }
+
+            .display{
+                display: flex;
+                margin-bottom: 10px;
+            }
+
+            .display_block{
+                display: block;
+                margin-right: 10px;
+            }
+
+            .username{
+                margin: 0 0 0 10px;
+                color: red;
+            }
+
+            .time{
+                margin: 0 0 0 10px;
+            }
+
+            .button_answer{
+                font-size: 14px;
+            }
+
+            .paginate{
+                margin-left: 45%;
+                color: red;
+            }
+
+            .footer{
+                bottom: 0;
+                width:100%;
+                position: relative;
+            }
+
+            .content{
+                min-height: 78%;
+                padding: 0 0;
             }
         </style>
     </head>
@@ -64,13 +122,13 @@
             </div>
         </nav>
 
-        <main class="py-5 bg-white">
+        <main class="py-5 bg-white content">
             @yield('content')
         </main>
 
-        <footer class="page-footer bg-dark">
+        <footer class="page-footer bg-dark footer">
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3 text-white">© 2019 Copyright
+            <div class="footer-copyright text-center py-4 text-white">© 2019 Copyright
                 <a href="https://mdbootstrap.com/education/bootstrap/" class="text-danger"> Bjora.com</a>
             </div>
             <!-- Copyright -->

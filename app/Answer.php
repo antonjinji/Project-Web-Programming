@@ -8,7 +8,15 @@ class Answer extends Model
 {
     protected $table = 'answers';
 
-    public function myQuestion(){
+    // protected $guarded = ['id', '_token'];
+
+    protected $fillable = ['question_id', 'answer', 'user_id', 'answerCreateDate'];
+
+    public function Question(){
         return $this->belongsTo(Question::class);
+    }
+
+    public function User(){
+        return $this->belongsTo(User::class);
     }
 }

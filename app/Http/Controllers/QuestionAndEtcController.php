@@ -8,7 +8,9 @@ use App\User;
 use App\Question;
 use App\Thread;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class QuestionAndEtcController extends Controller
 {
@@ -19,9 +21,9 @@ class QuestionAndEtcController extends Controller
      */
     public function index()
     {
-        $questions = Question::paginate(10);
+        $questionsAndEtc = Question::paginate(6);
 
-        return view('homePage', compact('questions'));
+        return view('homePage', compact('questionsAndEtc'));
     }
 
     public function showAndSearchDataQuestionForHomepage(Request $request){
@@ -30,9 +32,21 @@ class QuestionAndEtcController extends Controller
         if(isset($request['search'])){
             $key = $request['search'];
         }
-        $questionsAndEtc = Question::where('name', 'like', '%'.$key.'%')
-            ->orwhere('question', 'like', '%'.$key.'%')
-            ->paginate(10);
+        // ::where('name', 'like', "%$key%")
+        // $questionsAndEtc = Question::where('question', 'like', "%$key%")
+        // ->orWhereHas('users', function ($query) use ($search){
+        //     $query->where('name', 'like', '%'.$search.'%');
+        // })
+        // ->paginate(6);
+
+        $questionsAndEtc = Question::whereHas('User', function($query) use ($key) {
+            $query->where('name', 'like', '%'.$key.'%');
+        })->orwhere('question', 'like', '%'.$key.'%')->paginate(10);
+
+
+        // $questionsAndEtc = User::where('name', 'like', "%$key%")
+        // ->paginate(6);
+
         return view('homePage')->with('questionsAndEtc', $questionsAndEtc);
     }
 
@@ -41,9 +55,9 @@ class QuestionAndEtcController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function addQuestionPage()
     {
-        //
+        return view('addQuestion');
     }
 
     /**
@@ -52,9 +66,25 @@ class QuestionAndEtcController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addQuestion(Request $request)
     {
-        //
+        $this->validate($request, [
+            'question' => 'required',
+            'topic' => 'required'
+        ]);
+
+        $question = new Question();
+        $question->question = $request->question;
+        $question->topic_id = DB::table('topics')->where('nameTopic', $request->topic)->first()->id;
+        $question->user_id = Auth::user()->id;
+        $question->questionCreationDate = \Carbon\Carbon::now('Asia/Jakarta');
+        $question->save();
+
+        // $user->name = Session::get('name');
+        // $user->profile_picture = Session::get('profile_picture');
+        // $user->created_at = Session::get('create_at');
+
+        return redirect('/homePage')->with('success', 'Success Insert Question');
     }
 
     /**

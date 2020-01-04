@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->text('address');
             $table->date('birthday');
             $table->string('profile_picture')->default("user.jpg");
-            $table->boolean('isAdmin'); //1 -> admin, 0 -> member
+            $table->boolean('isAdmin'); //1->admin , 0->user
             $table->rememberToken();
             $table->timestamps();
         });

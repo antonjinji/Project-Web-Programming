@@ -8,11 +8,19 @@ class Question extends Model
 {
     protected $table = 'questions';
 
-    public function myTopic(){
+    // protected $guarded = ['id', '_token'];
+
+    protected $fillable = ['topic_id', 'question', 'questionStatus', 'user_id', 'questionCreationDate'];
+
+    public function Topic(){
         return $this->belongsTo(Topic::class);
     }
 
-    public function myAnswer(){
+    public function User(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function Answer(){
         return $this->hasMany(Answer::class);
     }
 }

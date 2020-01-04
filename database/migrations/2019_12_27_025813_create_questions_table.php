@@ -15,13 +15,20 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('topic_id');
+            $table->integer('topic_id');
             $table->string('question');
-            $table->string('questionStatus');
             $table->integer('user_id');
-            $table->date('questionCreationDate')->format('Y-m-d H:i:s');
+            $table->dateTime('questionCreationDate')->format('Y-m-d H:i:s');
             $table->timestamps();
         });
+
+        // Schema::table('questions', function (Blueprint $table) {
+        //     $table->foreign('topic_id')->references('id')->on('topics')->onDelete('cascade');
+        // });
+
+        // Schema::table('questions', function (Blueprint $table) {
+        //     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -31,6 +38,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question');
+        Schema::dropIfExists('questions');
     }
 }

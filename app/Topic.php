@@ -8,11 +8,15 @@ class Topic extends Model
 {
     protected $table = 'topics';
 
-    public function myUser(){
+    // protected $guarded = ['id', '_token'];
+
+    protected $fillable = ['user_id', 'nameTopic'];
+
+    public function User(){
         return $this->belongsTo(User::class);
     }
 
-    public function myQuestion(){
+    public function Question(){
         return $this->hasMany(Question::class);
     }
 }

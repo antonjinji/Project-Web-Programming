@@ -9,6 +9,6 @@ class logoutController extends Controller
 {
     public function logout(){
         Auth::logout();
-        return redirect('homePage');
+        return redirect('/homePage');
     }
 }
