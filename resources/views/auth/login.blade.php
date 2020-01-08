@@ -5,13 +5,13 @@
 @section('content')
 <style>
     .alert {
-        width: 47%; 
+        width: 47%;
         padding: 20px;
         background-color: #4CAF50;
         color: white;
         margin-bottom: 15px;
     }
-      
+
     /* The close button */
     .closebtn {
         margin-left: 15px;
@@ -29,25 +29,16 @@
         display: flex;
         justify-content: center;
     }
-      
+
     /* When moving the mouse over the close button */
     .closebtn:hover {
         color: black;
     }
 </style>
 
-@if (Session('success'))
-    <div class="modifAlert">
-        <div class="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-            {{Session::get('success')}}
-        </div>
-    </div>
-@endif
-
 @if (Session('fail'))
 <div class="modifAlert">
-    <div class="alert">
+    <div class="alert alert-danger">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         {{Session::get('fail')}}
     </div>
@@ -60,7 +51,7 @@
             <div class="card">
                 {{-- <div class="card-header align-content-lg-center">{{ __('Login') }}</div> --}}
                 <div class="card-body bg-light">
-                    <div class="header-text">Log in</div>
+                    <div class="header-text title">Log in</div>
                     <form method="POST" action="{{url('/login')}}">
                         @csrf
 

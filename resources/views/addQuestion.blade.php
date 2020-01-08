@@ -9,8 +9,8 @@
             <div class="col-md-7">
                 <div class="card">
                     {{-- <div class="card-header">{{ __('Register') }}</div> --}}
-                    <div class="card-body">
-                        <div class="header-text">Add Question</div>
+                    <div class="card-body bg-light">
+                        <div class="header-text title">Add Question</div>
                         <form method="POST" action="/homePage" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
@@ -40,12 +40,6 @@
                                     </button>
                                 </div>
                             </div>
-
-                            @if (Session::get('success'))
-                                <div class="alert alert-success" role="alert">
-                                    <strong>{{Session::get('success')}}</strong>
-                                </div>
-                            @endif
                         </form>
                     </div>
                 </div>

@@ -37,8 +37,7 @@ class ManageUserController extends Controller
      */
     public function addNewUser(Request $request)
     {
-
-        // return $request;
+        // return $request -> ini saya cuma buat test data nya ada masuk gak;
         $this->validate($request, [
             'name' =>'required|max:100',
             'email' => 'required|email|unique:users',
@@ -106,6 +105,8 @@ class ManageUserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //return $id; -> cuma buat test aja
+        //return request; -> cuma buat test aja
         $this->validate($request, [
             'name' =>'required|max:100',
             'email' => 'required|email|unique:users',

@@ -46,7 +46,7 @@ class TopicsTableSeeder extends Seeder
             [
                 'id' => 6,
                 'user_id' => 6,
-                'nameTopic' => "Human and Computer Interaction",
+                'nameTopic' => "HCI",
                 'created_at' => \Carbon\Carbon::now('Asia/Jakarta')
             ],
             [

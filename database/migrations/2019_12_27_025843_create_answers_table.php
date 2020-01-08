@@ -18,7 +18,7 @@ class CreateAnswersTable extends Migration
             $table->unsignedInteger('question_id');
             $table->text('answer');
             $table->integer('user_id');
-            $table->date('answerCreateDate')->format('Y-m-d H:i:s');
+            $table->dateTime('answerCreateDate')->format('Y-m-d H:i:s');
             $table->timestamps();
         });
 

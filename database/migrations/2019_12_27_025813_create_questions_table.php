@@ -15,6 +15,7 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('status')->default(0); //open->0, close->1
             $table->integer('topic_id');
             $table->string('question');
             $table->integer('user_id');

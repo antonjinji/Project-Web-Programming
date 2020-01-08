@@ -78,11 +78,6 @@
                 font-size: 14px;
             }
 
-            .paginate{
-                margin-left: 45%;
-                color: red;
-            }
-
             .footer{
                 bottom: 0;
                 width:100%;
@@ -92,6 +87,40 @@
             .content{
                 min-height: 78%;
                 padding: 0 0;
+            }
+
+            .title{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .pagination {
+                display: -ms-flexbox;
+                display: flex;
+                padding-left: 0;
+                list-style: none;
+                border-radius: .25rem;
+                justify-content: center;
+            }
+            
+            .pagination a {
+                color: #343a40;
+                text-decoration: none;
+                background-color: transparent;
+            }
+
+            .page-link:hover {
+                z-index: 2;
+                color: #dc3545;
+                text-decoration: none;
+                background-color: #e9ecef;
+                border-color: #dee2e6;
+            }
+
+            .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #dc3545;
+                border-color: #dc3545;
             }
         </style>
     </head>
@@ -129,7 +158,7 @@
         <footer class="page-footer bg-dark footer">
             <!-- Copyright -->
             <div class="footer-copyright text-center py-4 text-white">© 2019 Copyright
-                <a href="https://mdbootstrap.com/education/bootstrap/" class="text-danger"> Bjora.com</a>
+                <a href="{{ url('/homePage') }}" class="text-danger"> Bjora.com</a>
             </div>
             <!-- Copyright -->
         </footer>

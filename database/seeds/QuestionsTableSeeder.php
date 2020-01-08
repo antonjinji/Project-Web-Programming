@@ -15,6 +15,7 @@ class QuestionsTableSeeder extends Seeder
         DB::table('questions')->insert([
             [
                 'id' => 1,
+                'status' => 0,
                 'topic_id' => 1,
                 'question' => "What is the greatest paradox of becoming wealthy?",
                 'user_id' => 1,
@@ -22,13 +23,15 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
+                'status' => 0,
                 'topic_id' => 2,
-                'question' => "What do you regard as the most important way, in which a manager can use information technology?",
+                'question' => "In which a manager can use information technology?",
                 'user_id' => 2,
                 'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
             ],
             [
                 'id' => 3,
+                'status' => 1,
                 'topic_id' => 3,
                 'question' => "What is HTTP middleware?",
                 'user_id' => 3,
@@ -36,6 +39,7 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 4,
+                'status' => 0,
                 'topic_id' => 4,
                 'question' => "What are the activation functions?",
                 'user_id' => 4,
@@ -43,6 +47,7 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 5,
+                'status' => 0,
                 'topic_id' => 5,
                 'question' => "There are Challenges in Computer Vision?",
                 'user_id' => 5,
@@ -50,13 +55,15 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 6,
+                'status' => 0,
                 'topic_id' => 6,
-                'question' => "I wish to know more about the data set. I extract features for character and wish to see that if my data comes under the linear or non-linear category. Ho can I find this?",
+                'question' => "Ho can I find this?",
                 'user_id' => 6,
                 'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
             ],
             [
                 'id' => 7,
+                'status' => 1,
                 'topic_id' => 7,
                 'question' => "Why MySQL is used?",
                 'user_id' => 7,
@@ -64,6 +71,7 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 8,
+                'status' => 1,
                 'topic_id' => 8,
                 'question' => "What is Docker?",
                 'user_id' => 8,
@@ -71,6 +79,7 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 9,
+                'status' => 0,
                 'topic_id' => 9,
                 'question' => "Apakah kamu cinta saya?",
                 'user_id' => 9,
@@ -78,6 +87,7 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 10,
+                'status' => 0,
                 'topic_id' => 10,
                 'question' => "Kenapa kamu mau selingkuh?",
                 'user_id' => 10,
@@ -85,9 +95,26 @@ class QuestionsTableSeeder extends Seeder
             ],
             [
                 'id' => 11,
+                'status' => 0,
                 'topic_id' => 11,
                 'question' => "Kapan kita nikah sayang?",
                 'user_id' => 11,
+                'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
+            ],
+            [
+                'id' => 12,
+                'status' => 0,
+                'topic_id' => 3,
+                'question' => "Pacaran itu gimana ya?",
+                'user_id' => 4,
+                'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
+            ],
+            [
+                'id' => 13,
+                'status' => 0,
+                'topic_id' => 9,
+                'question' => "Gimana perasaan pacaran?",
+                'user_id' => 4,
                 'questionCreationDate' => \Carbon\Carbon::now('Asia/Jakarta')
             ]
         ]);

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class loginCheck
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -15,13 +15,13 @@ class loginCheck
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        //disini saya mengecek apakah dia status nya apa sekarang, kalau dia sebagai user atau admin, baru bisa next, kalau gk saya arahin dia ke halaman login.
-        //jadi dia tidak boleh sembarang langsung masuk ke page page tertentu.
-        if(Auth::check()){
+    {  
+        //1->admin , 0->user
+        if(Auth::check() && Auth::user()->isAdmin == 1){
             return $next($request);
         }else{
-            return redirect('/login');
+            return redirect('/homePage');
         }
+        
     }
 }

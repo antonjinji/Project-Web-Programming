@@ -21,8 +21,7 @@ class QuestionAndEtcController extends Controller
      */
     public function index()
     {
-        $questionsAndEtc = Question::paginate(6);
-
+        $questionsAndEtc = Question::paginate(10);
         return view('homePage', compact('questionsAndEtc'));
     }
 
@@ -42,10 +41,6 @@ class QuestionAndEtcController extends Controller
         $questionsAndEtc = Question::whereHas('User', function($query) use ($key) {
             $query->where('name', 'like', '%'.$key.'%');
         })->orwhere('question', 'like', '%'.$key.'%')->paginate(10);
-
-
-        // $questionsAndEtc = User::where('name', 'like', "%$key%")
-        // ->paginate(6);
 
         return view('homePage')->with('questionsAndEtc', $questionsAndEtc);
     }
@@ -93,10 +88,6 @@ class QuestionAndEtcController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.

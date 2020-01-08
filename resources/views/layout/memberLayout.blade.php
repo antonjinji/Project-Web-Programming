@@ -73,15 +73,10 @@
                 margin: 0 0 0 10px;
             }
 
-            .button_answer{
+            .button{
                 font-size: 14px;
             }
-
-            .paginate{
-                margin-left: 45%;
-                color: red;
-            }
-
+            
             .content{
                 min-height: 78%;
                 padding: 0 0;
@@ -91,6 +86,45 @@
                 width: 100%;
                 bottom: 0;
                 position: relative;
+            }
+
+            .title{
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .profile_picture_user{
+                height: 110px;
+                width: 125px;
+            }
+
+            .page-item.active .page-link {
+                z-index: 3;
+                color: #fff;
+                background-color: #dc3545;
+                border-color: #dc3545;
+            }
+
+            .pagination {
+                display: -ms-flexbox;
+                display: flex;
+                padding-left: 0;
+                list-style: none;
+                border-radius: .25rem;
+                justify-content: center;
+            }
+            
+            .pagination a {
+                color: #343a40;
+                text-decoration: none;
+                background-color: transparent;
+            }
+
+            .page-link:hover {
+                z-index: 2;
+                color: #dc3545;
+                text-decoration: none;
+                background-color: #e9ecef;
+                border-color: #dee2e6;
             }
         </style>
     </head>
@@ -106,10 +140,10 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">My Question</a>
+                                    <a class="nav-link" href="/homePage/myQuestion">My Question</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="#">Inbox</a>
+                                    <a class="nav-link" href="/homePage/inbox">Inbox</a>
                                 </li>
                             </ul>
                         </div>
@@ -129,7 +163,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <li class="navbar-text text-white"><button type="submit" class="btn btn-danger"><a style="text-decoration: none" href="/homePage/addQuestion">Add Question</a></button></li>
-                        <li class="navbar-text text-white"><a href="#" class="btn">Profile</a></li>
+                        <li class="navbar-text text-white"><a href="/homePage/profile/{{ Auth::user()->id }}" class="btn">Profile</a></li>
                         <li class="navbar-text text-white"><a href="{{ url('/logout')}}" class="btn">Logout</a></li>
                     </ul>
                 </div>
@@ -143,7 +177,7 @@
         <footer class="page-footer bg-dark footer">
             <!-- Copyright -->
             <div class="footer-copyright text-center py-4 text-white">© 2019 Copyright
-                <a href="https://mdbootstrap.com/education/bootstrap/" class="text-danger"> Bjora.com</a>
+                <a href="{{ url('/homePage') }}" class="text-danger"> Bjora.com</a>
             </div>
             <!-- Copyright -->
         </footer>

@@ -9,17 +9,15 @@
             <div class="card">
                 {{-- <div class="card-header">{{ __('Register') }}</div> --}}
                 <div class="card-body bg-light">
-                    <div class="header-text title">Edit User</div>
-                    <form method="POST" action="/homePage/manageUser/{{ $user->id }}" enctype="multipart/form-data">
-                        @method('put')
+                    <div class="header-text title">Update Profile</div>
+                    <form method="POST" action="/homePage/profile/edit/{{ $user->id }}" enctype="multipart/form-data">
                         @csrf
-                        {{-- @method('put') --}}
                         <div class="form-group row">
                             {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
                             <div class="col-md">
                                 <input id="name" placeholder="Fullname" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}">
                                 @error('name')
-                                    <div class="invalid-feedback">{{ $message}}</div>
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -29,20 +27,6 @@
                             <div class="col-md">
                                 <input id="email" placeholder="Email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}">
                                 @error('email')
-                                    <div class="invalid-feedback">{{ $message}}</div>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <div class="col-md">
-                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
-                                    <option value="Admin">Admin</option>
-                                    <option value="Member">Member</option>
-                                </select>
-
-                                @error('role')
                                     <div class="invalid-feedback">{{ $message}}</div>
                                 @enderror
                             </div>

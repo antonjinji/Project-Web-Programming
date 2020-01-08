@@ -75,7 +75,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => 6,
-                'name' => 'Satria Wiro Agung',
+                'name' => 'Satria W.A',
                 'email' => 'satriawz99@gmail.com',
                 'password' => bcrypt('satria123'),
                 'gender' => 'male',
@@ -99,7 +99,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => 8,
-                'name' => 'Selly Glanandreahong',
+                'name' => 'Sellyhung',
                 'email' => 'selly99@gmail.com',
                 'password' => bcrypt('selly123'),
                 'gender' => 'female',

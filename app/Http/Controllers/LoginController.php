@@ -27,8 +27,8 @@ class LoginController extends Controller
             'password' => $password])){
 
             if($remember){
-                // Cookie::make('email', $email, 60);
-                // Cookie::make('password', $password, 60);
+                Cookie::queue(Cookie::make('email',$email, 20));
+                Cookie::queue(Cookie::make('password',$password, 20));
 
                 return redirect('/homePage')->with('success', 'Success Login')->withCookie(cookie('cookie', $email, 30));
             }else{
